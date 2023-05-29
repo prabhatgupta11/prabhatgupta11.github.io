@@ -271,8 +271,28 @@ span {
     text-align: center;
     justify-content: center;
     align-items: center;
+    /* border: solid red; */
+    font-size: 30px;
     gap: 2rem;
     background: var(--bg-oxford-blue);
+  }
+  #about h4{
+    /* border: solid red; */
+    margin-top: 30px;
+  }
+
+  #about h2{
+    /* border: solid red; */
+    font-size: 25px;
+    margin-top: 30px;
+  }
+  #about p{
+    /* border: solid red; */
+    font-size: 21px;
+    margin-top: 10px;
+  }
+  #resume-button-2{
+    margin-top: 50px;
   }
   
   .heading {
