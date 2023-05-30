@@ -270,10 +270,29 @@ span {
   #about {
     text-align: center;
     justify-content: center;
+    border: solid red;
+    font-size: 30px;
     align-items: center;
     gap: 2rem;
     background: var(--bg-oxford-blue);
   }
+   
+  #about h2{
+   padding-top: 15px;
+    font-size: 26px;
+   
+  }
+  
+  #about h4{
+    padding-top: 35px;
+     font-size: 26px;
+    
+   }
+   #about p{
+    padding-top: 15px;
+     font-size: 20px;
+    
+   }
   
   .heading {
     text-align: center;
