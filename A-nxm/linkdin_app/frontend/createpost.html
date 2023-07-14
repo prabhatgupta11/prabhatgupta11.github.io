@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <title>Document</title>
+</head>
+<body>
+    <div id="container">
+        <h1>Note Creation Page</h1>
+        <input type="text" id="title" placeholder="Enter  Title...">
+        <input type="text" id="body" placeholder="Enter Note Body...">
+        <input type="text" id="device" placeholder="Enter device..">
+        <input type="text" id="comments" placeholder="Enter comments..">
+
+  
+        <button onclick="onAdd()">Add</button>
+    </div>
+    
+</body>
+</html>
+<script>
+        const onAdd = ()=>{
+            event.preventDefault()
+        const payload = {
+            title: document.getElementById("title").value,
+            body: document.getElementById("body").value,                             
+            device:document.getElementById("device").value, 
+            no_if_comments:document.getElementById("comments").value, 
+        }
+        fetch("https://sore-ruby-moth-wrap.cyclic.app/post/add", {
+            method:"POST",
+            headers:{
+                "Content-type":"application/json",
+                "Authorization": localStorage.getItem("token")
+            },
+            body: JSON.stringify(payload)
+        }).then(res => res.json())
+        .then(res=> console.log(res))
+        .catch(err=>console.log(err))
+    }
+</script>
