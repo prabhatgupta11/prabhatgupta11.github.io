@@ -53,6 +53,7 @@
       <th>Product</th>
       <th>Quantity</th>
       <th>Price</th>
+      <th>GST %</th>
       <th>Discount %</th>
       <th>Total</th>
       <th>Action</th>
@@ -111,6 +112,7 @@
       </td>
       <td><input type="number" name="quantity" class="quantity-input" value="1"></td>
       <td><input type="number" name="price" class="price-input"></td>
+      <td><input type="number" name="gst" class="gst-input"></td>
       <td><input type="number" name="discount" class="discount-input"></td>
       <td><input type="number" name="total" class="total-cell"></td>
       <td><i class="fa-solid fa-trash delete-row-btn"></i></td>
@@ -126,6 +128,7 @@
     const productSelect = row.querySelector(".product-select");
     const quantityInput = row.querySelector(".quantity-input");
     const priceInput = row.querySelector(".price-input");
+    const gstInput = row.querySelector(".gst-input");
     const discountInput = row.querySelector(".discount-input");
     const totalInput = row.querySelector(".total-cell");
     const deleteBtn = row.querySelector(".delete-row-btn");
@@ -134,6 +137,7 @@
     productSelect.addEventListener("change", updateTotal);
     quantityInput.addEventListener("input", updateTotal);
     priceInput.addEventListener("input", updateTotal);
+     gstInput.addEventListener("input", updateTotal);
     discountInput.addEventListener("input", updateTotal);
     // totalInput.addEventListener("input");
     deleteBtn.addEventListener("click", function () {
@@ -150,11 +154,16 @@
       const quantity = parseFloat(row.querySelector(".quantity-input").value);
       const price = parseFloat(row.querySelector(".price-input").value);
       const discount = parseFloat(row.querySelector(".discount-input").value);
+      const gst = parseFloat(row.querySelector(".gst-input").value);
+
 
       const total = (quantity * price) - (quantity * price) * discount/100;
+            const gstAmount = (total * gst) / 100;
+
+            const totalWithGST = total + gstAmount;
       row.querySelector(".total-cell").value = total.toFixed(2);
 
-      grandTotal += total;
+     grandTotal += totalWithGST;
 
     });
 
@@ -213,7 +222,7 @@
     customerPinCode,
     paymentMode,
     totalAmount,
-    // ... Other customer details
+    // ... Other cus  tomer details
     products // Send products as an array
   };
 
