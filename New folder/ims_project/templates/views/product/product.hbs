@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body id="body-pd">
+    {{>side}}
+    <form action="/createProduct" method="post" enctype="multipart/form-data" />
+    <section id="general">
+        <div class="height-100 bg-light">
+            <h3 class="pt-4">Add Category</h3>
+            {{#if message}}
+            <div class="alert alert-info">{{message}}</div>
+            {{/if}}
+
+            <div class="col-md-12 main-table-data container mt-4 border">
+                <h3 class="pt-4">Add Product Details</h3>
+                <div class="col-md-12 subtitle">
+                    <h5><a href="#general" onclick="showSection('general')">General</a></h5>
+                    <h5><a href="#sale" onclick="showSection('sale')">Sales</a></h5>
+                    <h5><a href="#text" onclick="showSection('text')">Taxes</a></h5>
+                    <h5><a href="#packaging" onclick="showSection('packaging')">Packaging</a></h5>
+                </div>
+                <div class="handler-container col-md-12">
+                    <div class="col-md-6 textarea-container-first pt-4">
+                        <div class="md-form mb-4  active-pink-textarea-2">
+                            <label for="form17" class="formlabel">Item Name</label>
+                            <textarea id="form17" name="itemName" class="md-textarea form-control" rows="2"
+                                cols="5"></textarea>
+                        </div>
+
+                        {{!-- {{ <div class="md-form mb-4  active-pink-textarea-2">
+                            <label for="form17" class="formlabel">Store</label>
+                            <select name="storeId" class="md-textarea form-control">
+                                <option>Select Store</option>
+                                {{#each store}}
+                                <option value="{{id}}"> {{ storeName }} </option>
+                                {{/each}}
+                            </select> }}
+                            {{
+                        </div>}} --}}
+                        <div class="md-form mb-4  active-pink-textarea-2">
+                            <label for="form17" class="formlabel">Short Name</label>
+                            <textarea id="form17" name="shortName" class="md-textarea form-control" rows="2"
+                                cols="5"></textarea>
+                        </div>
+                        <div class="md-form mb-4  active-pink-textarea-2">
+                            <label for="form17" class="formlabel">Food Type</label>
+                            <textarea id="form17" name="foodType" class="md-textarea form-control" rows="2"
+                                cols="5"></textarea>
+                        </div>
+                        <div class="md-form mb-4  active-pink-textarea-2">
+                            <label for="form17" class="formlabel">Item Product Type</label>
+                            <textarea id="form17" name="itemProductType" class="md-textarea form-control" rows="2"
+                                cols="5"></textarea>
+                        </div>
+                    </div>
+                    <div class="col-md-6 textarea-container-second pt-4">
+                        <div class="md-form mb-4  active-pink-textarea-2">
+                            <label for="form17" class="formlabel">Image URL</label>
+                            <input id="form17" type="file" name="imageUrl" class="md-textarea form-control" rows="2"
+                                cols="5" />
+                        </div>
+                        <div class="md-form mb-4  active-pink-textarea-2">
+                            <label for="form17" class="formlabel">Status</label>
+                            <textarea id="form17" name="status" class="md-textarea form-control" rows="2"
+                                cols="5"></textarea>
+                        </div>
+                        <div class="md-form mb-4  active-pink-textarea-2">
+                            <label for="form17" class="formlabel">Manufacturer</label>
+                            <select id="form17" name="manufacturerId" class="form-control">
+                                <option>Select Manufacturer</option>
+                                {{#each manufacturer}}
+                                <option value="{{manufacturerId}}"> {{ shortDescription }} </option>
+                                {{/each}}
+                            </select>
+                        </div>
+                        <div class="md-form mb-4  active-pink-textarea-2">
+                            <label for="form17" class="formlabel">Description</label>
+                            <textarea id="form17" name="description" class="md-textarea form-control" rows="2"
+                                cols="5"></textarea>
+                        </div>
+                        {{!-- <div class="col-md-12 button-container">
+                            <button class="button-34" onclick="showSection('sale')">Next</button>
+                        </div> --}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="sale" style="display: none;">
+        <div class="height-100 bg-light">
+            <h3 class="pt-4">Add Category</h3>
+            <div class="col-md-12 main-table-data container mt-4 border">
+                <h3 class="pt-4">Add Product Details</h3>
+                <div class="col-md-12 subtitle">
+                    <h5><a href="#general" onclick="showSection('general')">General</a></h5>
+                    <h5><a href="#sale" onclick="showSection('sale')">Sales</a></h5>
+                    <h5><a href="#text" onclick="showSection('text')">Taxes</a></h5>
+                    <h5><a href="#packaging" onclick="showSection('packaging')">Packaging</a></h5>
+                </div>
+                <div class="handler-container col-md-12">
+                    <div class="col-md-6 textarea-container-first pt-4">
+                        <div class="md-form mb-4  active-pink-textarea-2">
+                            <label for="form17" class="formlabel">Length</label>
+                            <textarea id="form17" name="length" class="md-textarea form-control" rows="2"
+                                cols="5"></textarea>
+                        </div>
+                        <div class="md-form mb-4  active-pink-textarea-2">
+                            <label for="form17" class="formlabel">Breadth</label>
+                            <textarea id="form17" name="breadth" class="md-textarea form-control" rows="2"
+                                cols="5"></textarea>
+                        </div>
+                        <div class="md-form mb-4  active-pink-textarea-2">
+                            <label for="form17" class="formlabel">Height</label>
+                            <textarea id="form17" name="height" class="md-textarea form-control" rows="2"
+                                cols="5"></textarea>
+                        </div>
+                        {{!-- <div class="col-md-12 button-container">
+                            <button class="button-34" onclick="showSection('general')">Previous</button>
+                        </div> --}}
+                    </div>
+                    <div class="col-md-6 textarea-container-second pt-4">
+                        <div class="md-form mb-4  active-pink-textarea-2">
+                            <label for="form17" class="formlabel">Weight</label>
+                            <textarea id="form17" name="weight" class="md-textarea form-control" rows="2"
+                                cols="5"></textarea>
+                        </div>
+                        <div class="md-form mb-4  active-pink-textarea-2">
+                            <label for="form17" class="formlabel">Width</label>
+                            <textarea id="form17" name="width" class="md-textarea form-control" rows="2"
+                                cols="5"></textarea>
+                        </div>
+                        <div class="md-form mb-4  active-pink-textarea-2">
+                            <label for="form17" class="formlabel">Decimal Allowed</label>
+                            <textarea id="form17" name="decimalsAllowed" class="md-textarea form-control" rows="2"
+                                cols="5"></textarea>
+                        </div>
+                        {{!-- <div class="col-md-12 button-container">
+                            <button class="button-34" onclick="showSection('text')">Next</button>
+                        </div> --}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="text" style="display: none;">
+        <div class="height-100 bg-light">
+            <h3 class="pt-4">Add Category</h3>
+            <div class="col-md-12 main-table-data container mt-4 border">
+                <h3 class="pt-4">Add Product Details</h3>
+                <div class="col-md-12 subtitle">
+                    <h5><a href="#general" onclick="showSection('general')">General</a></h5>
+                    <h5><a href="#sale" onclick="showSection('sale')">Sales</a></h5>
+                    <h5><a href="#text" onclick="showSection('text')">Taxes</a></h5>
+                    <h5><a href="#packaging" onclick="showSection('packaging')">Packaging</a></h5>
+                </div>
+                <div class="handler-container col-md-12">
+                    <div class="col-md-6 textarea-container-first pt-4">
+                        <div class="md-form mb-4  active-pink-textarea-2">
+                            <label for="form17" class="formlabel">Tax Id</label>
+                            <textarea id="form17" name="taxId" class="md-textarea form-control" rows="2"
+                                cols="5"></textarea>
+                        </div>
+                        <div class="md-form mb-4  active-pink-textarea-2">
+                            <label for="form17" class="formlabel">Item Text Type</label>
+                            <textarea id="form17" name="itemTaxType" class="md-textarea form-control" rows="2"
+                                cols="5"></textarea>
+                        </div>
+                        <div class="md-form mb-4  active-pink-textarea-2">
+                            <label for="form17" class="formlabel">Item Product Text Type</label>
+                            <textarea id="form17" name="itemProductTaxType" class="md-textarea form-control" rows="2"
+                                cols="5"></textarea>
+                        </div>
+                        <div class="md-form mb-4  active-pink-textarea-2">
+                            <label for="form17" class="formlabel">Fulfillment Mode</label>
+                            <textarea id="form17" name="fulfilmentMode" class="md-textarea form-control" rows="2"
+                                cols="5"></textarea>
+                        </div>
+                        {{!-- <div class="col-md-12 button-container">
+                            <button class="button-34" onclick="showSection('sale')">Previous</button>
+                        </div> --}}
+                    </div>
+                    <div class="col-md-6 textarea-container-second pt-4">
+                        <div class="md-form mb-4  active-pink-textarea-2">
+                            <label for="form17" class="formlabel">Is Returnable</label>
+                            <textarea id="form17" name="isReturnable" class="md-textarea form-control" rows="2"
+                                cols="5"></textarea>
+                        </div>
+                        <div class="md-form mb-4  active-pink-textarea-2">
+                            <label for="form17" class="formlabel">Is Cancellable</label>
+                            <textarea id="form17" name="isCancellable" class="md-textarea form-control" rows="2"
+                                cols="5"></textarea>
+                        </div>
+                        <div class="md-form mb-4  active-pink-textarea-2">
+                            <label for="form17" class="formlabel">Return Period</label>
+                            <textarea id="form17" name="returnPeriod" class="md-textarea form-control" rows="2"
+                                cols="5"></textarea>
+                        </div>
+                        <div class="md-form mb-4  active-pink-textarea-2 mb-5" style="padding-bottom: 32px">
+                            <label for="form17" class="formlabel"></label>
+                            <div id="form17" class="m form-control" rows="2" cols="5"></div>
+                        </div>
+                        {{!-- <div class="col-md-12 button-container">
+                            <button class="button-34" onclick="showSection('packaging')">Next</button>
+                        </div> --}}
+                    </div>
+                </div>
+    </section>
+
+    <section id="packaging" style="display: none;">
+        <div class="height-100 bg-light">
+            <h3 class="pt-4">Add Category</h3>
+            <div class="col-md-12 main-table-data container mt-4 border">
+                <h3 class="pt-4">Add Product Details</h3>
+                <div class="col-md-12 subtitle">
+                    <h5><a href="#general" onclick="showSection('general')">General</a></h5>
+                    <h5><a href="#sale" onclick="showSection('sale')">Sales</a></h5>
+                    <h5><a href="#text" onclick="showSection('text')">Taxes</a></h5>
+                    <h5><a href="#packaging" onclick="showSection('packaging')">Packaging</a></h5>
+                </div>
+                <div class="handler-container col-md-12">
+                    <div class="col-md-6 textarea-container-first pt-4">
+                        <div class="md-form mb-4  active-pink-textarea-2">
+                            <label for="form17" class="formlabel">Box</label>
+                            <textarea id="form17" class="md-textarea form-control" rows="2" cols="5"></textarea>
+                        </div>
+                        <div class="md-form mb-4  active-pink-textarea-2">
+                            <label for="form17" class="formlabel">Rack</label>
+                            <textarea id="form17" class="md-textarea form-control" rows="2" cols="5"></textarea>
+                        </div>
+                        <div class="md-form mb-4  active-pink-textarea-2">
+                            <label for="form17" class="formlabel">IBaru</label>
+                            <textarea id="form17" class="md-textarea form-control" rows="2" cols="5"></textarea>
+                        </div>
+                        {{!-- <div class="col-md-12 button-container">
+                            <button class="button-34" onclick="showSection('text')">Previous</button>
+                        </div> --}}
+                    </div>
+                    <div class="col-md-6 textarea-container-second pt-4">
+                        <div class="md-form mb-4  active-pink-textarea-2">
+                            <label for="form17" class="formlabel">Weight Grams</label>
+                            <textarea id="form17" class="md-textarea form-control" rows="2" cols="5"></textarea>
+                        </div>
+                        <div class="md-form mb-4  active-pink-textarea-2">
+                            <label for="form17" class="formlabel">Detailed Description</label>
+                            <textarea id="form17" class="md-textarea form-control" rows="2" cols="5"></textarea>
+                        </div>
+                        <div class="md-form mb-4  active-pink-textarea-2">
+                            <label for="form17" class="formlabel">Applied Online</label>
+                            <textarea id="form17" class="md-textarea form-control" rows="2" cols="5"></textarea>
+                        </div>
+                        <div class="col-md-12 button-container">
+                            <button class="button-34" role="button" type="submit">Submit</button>
+                        </div>
+                    </div>
+                </div>
+    </section>
+    </form>
+    <script>
+        function showSection(section) {
+            const sections = ['general', 'sale', 'text', 'packaging'];
+
+            sections.forEach(function (sec) {
+                document.getElementById(sec).style.display = 'none';
+            });
+
+            document.getElementById(section).style.display = 'block';
+        }
+    </script>
+</body>
+
+</html>

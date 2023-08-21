@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body id="body-pd">
+    {{>side}}
+    <form action="/userStoreMapping" method="post">
+        <section>
+            <div class="height-100 bg-light">
+                <div class="col-md-12 main-table-data container mt-5 border" style="padding-top: 20px;">
+                    {{#if message}}
+                    <div class="alert alert-info">{{message}}</div>
+                    {{/if}}
+                    <div class="col-md-12 title-title">
+                        <h3 class="pt-4"> User Store Mapping </h3>
+                    </div>
+                    <div class="handler-container col-md-12 ">
+                        <div class="col-md-6 textarea-container-first pt-4">
+                            <div class="md-form mb-4  active-pink-textarea-2">
+                                <label for="form17" class="formlabel">User</label>
+                                <select id="form17" name="id" class="form-control">
+                                    <option>Select User</option>
+                                    {{#each user}}
+                                    <option value="{{id}}"> {{ email }} </option>
+                                    {{/each}}
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-6 textarea-container-first pt-4">
+                            <div class="md-form mb-4  active-pink-textarea-2" id="storeList">
+                                <label class="formlabel">Select Store</label>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="container" style="padding: 50px;">
+                    <div class="row">
+                        <div class="col-md-6" style="text-align: center;">
+                            <button class="button-34" role="button" type="submit" style="margin:10px">Update</button>
+                        </div>
+                        <div class="col-md-6" style="text-align: center;">
+                            <button class="button-34" role="button" type="reset" style="margin:10px">Cancel</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </section>
+    </form>
+
+    <!-- Add this script tag to include jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- Add this script in a <script> tag in your HTML -->
+    {{!-- <script> --}}
+        $(document).ready(function () {
+            $('#form17').on('change', function () {
+
+                const userId = $(this).val();
+
+                // Use an API endpoint to fetch the user's selected stores based on userId
+                $.get(`/getSelectedStores/${userId}`, function (selectedStores) {
+                    console.log(selectedStores)
+                    // Clear the previous content in #storeList
+                     $('#storeList').empty()
+                    // Loop through the selectedStores and mark the corresponding checkboxes as checked
+                    selectedStores.forEach(function (data) {
+                       // if (data.checked == false) {
+                            $('#storeList').append(
+                                $(document.createElement('input')).prop({
+                                    id: 'myCheckBox',
+                                    name: 'outletId',
+                                    value: data.outletId,
+                                    type: 'checkbox',
+                                    checked : data.checked
+                                })
+
+
+
+                            ).append(
+                                $(document.createElement('label')).prop({
+                                    for: 'myCheckBox'
+                                }).html(data.storeName)
+                            ).append(document.createElement('br'));
+                       // }
+                    })
+                });
+            });
+        });
+    {{!-- </script>  --}}
+    <script>
+    $(document).ready(function () {
+        $('#form17').on('change', function () {
+            const userId = $(this).val();
+
+            // Use an API endpoint to fetch the user's selected stores based on userId
+            $.get(`/getSelectedStores/${userId}`, function (selectedStores) {
+                console.log(selectedStores);
+                const storeList = $('#storeList');
+                
+                // Clear the previous content in #storeList
+                storeList.empty();
+                
+                // Loop through the selectedStores and create checkboxes with labels
+                selectedStores.forEach(function (data) {
+                    const checkbox = $(document.createElement('input')).prop({
+                        id: 'myCheckBox_' + data.outletId,
+                        name: 'outletId',
+                        value: data.outletId,
+                        type: 'checkbox',
+                        checked: data.checked
+                    });
+
+                  /*  checkbox.on('change', function () {
+                        const isChecked = $(this).prop('checked');
+                        if (!isChecked) {
+                            // Handle deselection here
+                            // Remove the store from the user's selection on the server-side
+                            $.post(`/deselectStore/${userId}/${data.outletId}`, function (response) {
+                                console.log(response);
+                            });
+                        }
+                    });*/
+
+                    storeList.append(checkbox)
+                        .append(
+                            $(document.createElement('label')).prop({
+                                for: 'myCheckBox_' + data.outletId
+                            }).html(data.storeName)
+                        )
+                        .append(document.createElement('br'));
+                });
+            });
+        });
+    });
+</script>
+
+    {{!-- <div class="form-check">
+        <input class="form-check-input" type="checkbox" name="outletId" value="{{outletId}}">
+        <label class="form-check-label">{{storeName}}</label>
+    </div> --}}
+</body>
+
+</html>

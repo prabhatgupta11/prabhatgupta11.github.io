@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Store Mapping Approval Requests</title>
+</head>
+
+<body id="body-pd">
+  {{>side}}
+  <section>
+    
+    <div class="height-100 bg-light">
+      <h3 class="pt-5"></h3>
+       <h3 class="pt-4">User Store Mapping Approval Requests</h3>
+      <form action="//userStoreMappingApprovalList" method="get">
+        <div class="col-md-12 main-table-data container mt-4 border">
+          <div class="handler-container col-md-12">
+            <div class="md-form mb-4  col-md-2 active-pink-textarea-2">
+              <label for="approvalStatus" class="formlabel">Approval Status</label>
+              <select id="approvalStatus" name="approvalStatus" class="form-control">
+                <option value="">Select</option>
+                <option value="pending" {{#isEqual approvalStatus "pending" }}selected{{/isEqual}}>Pending</option>
+                <option value="approved" {{#isEqual approvalStatus "approved" }}selected{{/isEqual}}>Approved</option>
+                <option value="rejected" {{#isEqual approvalStatus "rejected" }}selected{{/isEqual}}>Rejected</option>
+              </select>
+            </div>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>User ID</th>
+                  <th>Store ID</th>
+                  <th>Status</th>
+                  <th>Select</th>
+                </tr>
+              </thead>
+              <tbody>
+                {{#each userStore}}
+                <tr>
+                  <td>{{this.userFk}}</td>
+                  <td>{{this.storeFk}}</td>
+                  <td>{{this.approve_b}}</td>
+                  <td><input type="checkbox" name="selectedUsers" value="{{this.userFk}}"></td>
+                  
+                </tr>
+                {{/each}}
+              </tbody>
+            </table>
+          </div>
+          <div class="container d-flex justify-content-center col-md-5 align-items-center" style="padding: 50px;">
+
+              <div class="col-md-12 text-end" >
+                <button class="button-34" role="button" type="menu" style="margin:10px">Get List</button>
+              </div>
+              <div class="col-md-12 text-center" >
+                <button class="button-34" id="approveButton" role="button" type="submit" style="margin:10px">Approve
+                </button>
+              </div>
+              <div class="col-md-12 text-start">
+                <button class="button-34" id="rejectButton" role="button" type="submit" style="margin:10px">Reject
+                </button>
+              </div>
+     
+          </div>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <!-- Add this script within the <head> section or just before the closing </body> tag -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const approveButton = document.querySelector('#approveButton');
+      const rejectButton = document.querySelector('#rejectButton');
+
+      approveButton.addEventListener('click', function (event) {
+      //  event.preventDefault();
+        performAction('approved');
+      });
+
+      rejectButton.addEventListener('click', function (event) {
+      //  event.preventDefault();
+        performAction('rejected');
+      });
+
+      function performAction(action) {
+        const selectedCheckboxes = document.querySelectorAll('input[name="selectedUsers"]:checked');
+        const selectedUserIds = Array.from(selectedCheckboxes).map(checkbox => checkbox.value);
+console.log(electedUserIds)
+        // Now you can send the electedUserIds to your server using AJAX or a form submission
+        // Include the action and electedUserIds in the request to update the approval status
+
+        // For example, using fetch to send the data to the server:
+        fetch('/updateUserStoreMappingApprovalStatus', {
+          method: 'POST',
+          body: JSON.stringify({ action, electedUserIds }),
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        })
+          .then(response => response.json())
+          .then(data => {
+            // Handle the response from the server, maybe show a success message
+            console.log(data);
+          })
+          .catch(error => {
+            console.error('Error:', error);
+          });
+      }
+    });
+  </script>
+
+</body>
+
+</html>

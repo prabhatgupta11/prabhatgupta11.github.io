@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IMS PROJECT</title>
+    <link rel="stylesheet" href="/css/dashboard.css">
+    <link rel="stylesheet" href="/css/side.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
+    <!-- MDB -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.0/mdb.min.css" rel="stylesheet"   />
+</head>
+
+
+<body id="body-pd">
+    <header class="header d-flex" id="header">
+        <div class="header_toggle"> <i class='bx bx-menu' id="header-toggle"></i>
+            {{!-- <div class="input-group rounded w-100">
+                <input type="search" class="form-control  search-bar " placeholder="Search" aria-label="Search"
+                    aria-describedby="search-addon" />
+                <span class="input-group-text border-0" id="search-addon">
+                    <i class="fas fa-search"></i>
+                </span>
+            </div> --}}
+
+        </div>
+        <div class="identi">
+            <i class="fa-solid fa-message"></i>
+            <i class="fa-solid fa-bell "></i>
+            <div class="user-detail-data">
+                <img src="/images/1.png" alt="">
+            </div>
+        </div>
+    </header>
+
+    <div class="l-navbar" id="nav-bar">
+        <nav class="nav">
+            <div class="main-items">
+                <a href="/dashboard" class="nav_logo">
+                    <i class="bx bx-layer nav_logo-icon"></i>
+                    <span class="nav_logo-name">ScaleEdge</span>
+                </a>
+
+
+                <div class="nav_list ">
+                    <a href="#" class="nav_link sub-btn">
+                        <i class="bx bx-folder nav_icon "></i>
+                        <span class="nav_name " aria-expanded="false" type="button"> Master <span
+                                class="dropdown-toggle span-icon"></span></span>
+
+                    </a>
+                    <div class="sub-menu">
+                        <div class="col-name">
+                            <a href="/productMasterList"> <i class="fa-solid fa-minus"></i> Product Master List</a>
+                            <a href="/productDetailsList"> <i class="fa-solid fa-minus"></i> Product Detail List</a>
+                            {{!-- <a href="/product"> <i class="fa-solid fa-minus"></i> Add Product</a> --}}
+                            {{!-- <a href="/storeMaster"> <i class="fa-solid fa-minus"></i>Store Master</a> --}}
+                            <a href="/storeList"> <i class="fa-solid fa-minus"></i> Store List</a>
+                            {{!-- <a href="/manufacturer"> <i class="fa-solid fa-minus"></i>Manufacturer</a> --}}
+                            <a href="/manufacturerList"> <i class="fa-solid fa-minus"></i> Manufacturer List</a>
+                            {{!-- <a href="/category"> <i class="fa-solid fa-minus"></i> Category</a> --}}
+                            <a href="/categoryList"> <i class="fa-solid fa-minus"></i> Category List</a>
+                            <a href="/productRaise"> <i class="fa-solid fa-minus"></i> Product Rate</a>
+                            <a href="/productCategoryMapping"> <i class="fa-solid fa-minus"></i> Product Category Mapping</a>
+                            <a href="/stockInOut"> <i class="fa-solid fa-minus"></i> Stock In/Out</a>
+                            {{!-- <a href="/user"> <i class="fa-solid fa-minus"></i>User Management</a> --}}
+                            <a href="/userList"> <i class="fa-solid fa-minus"></i>User List</a>
+                            <a href="/userStoreMapping"> <i class="fa-solid fa-minus"></i>User Store Mapping</a>
+                            <a href="/categoryApprovalList"> <i class="fa-solid fa-minus"></i>Category Approval List</a>
+                            <a href="/manufacturerApprovalList"> <i class="fa-solid fa-minus"></i>Manufacturer Approval List</a>
+                             <a href="/storeApprovalList"> <i class="fa-solid fa-minus"></i>Store Approval List</a>
+                             <a href="/productApprovalList"> <i class="fa-solid fa-minus"></i>Product Approval List</a>
+                             <a href="/proCatMapApprovalList"> <i class="fa-solid fa-minus"></i>Product Category Mapping Approval List</a>
+                              <a href="/productRaiseApprovalList"> <i class="fa-solid fa-minus"></i>Product Raise Approval List</a>
+                             <a href="/stockInOutApprovalList"> <i class="fa-solid fa-minus"></i>Stock In/Out Approval List</a>
+                             <a href="/userStoreMappingApprovalList"> <i class="fa-solid fa-minus"></i>User Store Mapping Approval List</a>
+                             
+                        </div>
+                    </div>
+
+
+                    <a href="#" class="nav_link">
+                        <i class="bx bx-cart nav_icon"></i></i>
+                        <span class="nav_name">Categories</span>
+                    </a>
+                    <a href="#" class="nav_link">
+                        <i class="bx bx-file nav_icon"></i>
+                        <span class="nav_name">Files</span>
+                    </a>
+                    <a href="/order" class="nav_link">
+                        <i class="bx bx-file nav_icon"></i>
+                        <span class="nav_name">Order Billing</span>
+                    </a>
+                    <a href="/orderList" class="nav_link">
+                        <i class="bx bx-file nav_icon"></i>
+                        <span class="nav_name">Order List</span>
+                    </a>
+                </div> 
+
+
+            </div>
+            <a href="/logout" class="nav_link">
+                <i class="bx bx-log-out nav_icon"></i>
+                <span class="nav_name">SignOut</span>
+            </a>
+        </nav>
+    </div>
+
+    
+        
+
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function (event) {
+
+            const showNavbar = (toggleId, navId, bodyId, headerId) => {
+                const toggle = document.getElementById(toggleId),
+                    nav = document.getElementById(navId),
+                    bodypd = document.getElementById(bodyId),
+                    headerpd = document.getElementById(headerId)
+
+                if (toggle && nav && bodypd && headerpd) {
+                    toggle.addEventListener('click', () => {
+                        nav.classList.toggle('show')
+                        toggle.classList.toggle('bx-x')
+                        bodypd.classList.toggle('body-pd')
+                        headerpd.classList.toggle('body-pd')
+                    })
+                }
+            }
+
+            showNavbar('header-toggle', 'nav-bar', 'body-pd', 'header')
+
+            /*===== LINK ACTIVE =====*/
+            const linkColor = document.querySelectorAll('.nav_link')
+
+            function colorLink() {
+                if (linkColor) {
+                    linkColor.forEach(l => l.classList.remove('active'))
+                    this.classList.add('active')
+                }
+            }
+            linkColor.forEach(l => l.addEventListener('click', colorLink))
+
+        });
+    </script>
+</body>
+<script src="https://kit.fontawesome.com/a7d20ff54b.js" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"
+    integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.sub-btn').on('click', function () {
+            $(this).next(".sub-menu").slideToggle();
+        });
+    });
+</script>
+{{!-- <script src="https://cdn.datatables.net/1.13.5/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.5/js/dataTables.bootstrap5.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#productList').DataTable();
+    })
+</script> --}}
+
+</html>

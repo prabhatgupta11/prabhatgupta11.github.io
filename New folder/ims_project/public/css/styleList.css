@@ -1,0 +1,157 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&family=Ubuntu:wght@300;400&display=swap');
+* {
+    padding: 0px;
+    margin: 0px;
+    font-family: 'Poppins', sans-serif;
+}
+
+
+
+body {
+    user-select: none;
+    color: #000;
+    line-height: 1.5;
+    background-color: transparent
+}
+
+.sidebar-menu {
+    border-right: 2px solid rgba(103, 116, 142, 0.2);
+    background-color: #556168;
+    /* left: -500px;
+    position: absolute; */
+}
+
+.main_container{
+    margin-left: 100px;
+   
+}
+
+.btn-light {
+    border: none;
+    color: white;
+    background-color: transparent;
+}
+
+.sidebar-menu li :hover {
+    color: orange;
+    font-size: 17px;
+}
+
+.sidebar-menu li :focus {
+    color: orange;
+}
+
+.sidebar-menu li :active {
+    color: orange;
+}
+
+.sidebar-menu ul {
+    list-style: none;
+}
+
+.sidebar-menu ul a {
+    text-decoration: none;
+    color: white;
+}
+
+.sidebar-menu ul li {
+    padding-top: 20px;
+}
+
+.sidebar-menu li a {
+    padding-right: 6px;
+}
+
+i {
+    padding-right: 8px;
+}
+
+.navbar-brand {
+    font-size: 30px;
+    font-weight: 400;
+}
+
+.logo {
+    line-height: 40px;
+}
+
+.logo img {
+    height: auto;
+    vertical-align: middle;
+}
+
+.navbar {
+    border-right: 2px solid rgba(103, 116, 142, 0.2);
+    background: linear-gradient(to right, #ff9b44 0%, #fc6075 100%);
+    border-bottom: 2px solid transparent;
+    padding: 10px;
+    /* left: -500px;
+    position: absolute; */
+}
+
+.search {
+    background-color: transparent;
+    border: none;
+}
+
+.searchbtn {
+    border: 1px solid white;
+    color: white;
+}
+
+.container-table {
+    margin: 0 0 25px;
+    border: 1px solid #e8ebed;
+    border-radius: 6px;
+
+}
+
+.header-left {
+    float: left;
+    height: 38px;
+    position: relative;
+    text-align: center;
+    width: 230px;
+    z-index: 1;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+}
+
+.fa-bars {
+    font-size: 24px;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.navbar-brand {
+    font-size: 24px;
+    margin-bottom: 0;
+}
+
+.arrow{
+    content: "";
+    width: 8px;
+    height: 8px;
+    border-top: 0;
+    border-left: 0;
+    border-right: 2px solid white;
+    border-bottom: 2px solid white;
+    border-radius: 1px;
+    transform: rotate(45deg);
+    transition: all .5s;
+    position: absolute;
+    left: 120px;
+    top: 26px;
+}
+
+
+@media (max-width:954px) {
+    .sidebar-menu {
+        transform: translateX(-100%);
+        transition: all 0.5s ease-in-out;
+        display: none;
+    }
+}

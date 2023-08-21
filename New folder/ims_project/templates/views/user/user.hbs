@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body id="body-pd">
+    {{>side}}
+    <form action="/createUser" method="post">
+        <section>
+            <div class="height-100 bg-light">
+                {{#if message}}
+                <div class="alert alert-info">{{message}}</div>
+                {{/if}}
+                <h3 class="pt-4">Add User</h3>
+                <div class="col-md-12 main-table-data container mt-4 border">
+                    <h3 class="pt-4">Add User Details</h3>
+                    <div class="handler-container col-md-12">
+
+                        <div class="col-md-6 textarea-container-first pt-4">
+                            <div class="md-form mb-4  active-pink-textarea-2">
+                                <label for="form17" class="formlabel"> First Name</label>
+                                <textarea id="form17" name="firstName" class="md-textarea form-control" rows="2"
+                                    cols="5"></textarea>
+                            </div>
+                        </div>
+                        <div class="col-md-6 textarea-container-second pt-4">
+                            <div class="md-form mb-4  active-pink-textarea-2">
+                                <label for="form17" class="formlabel">Last Name</label>
+                                <textarea id="form17" name="lastName" class="md-textarea form-control" rows="2"
+                                    cols="5"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="handler-container col-md-12">
+                        <div class="col-md-6 textarea-container-first pt-4">
+                            <div class="md-form mb-4  active-pink-textarea-2">
+                                <label for="form17" class="formlabel">Email</label>
+                                <textarea id="form17" name="email" class="md-textarea form-control" rows="2"
+                                    cols="5"></textarea>
+                            </div>
+                        </div>
+                        <div class="col-md-6 textarea-container-second pt-4">
+                            <div class="md-form mb-4  active-pink-textarea-2">
+                                <label for="form17" class="formlabel">Mobile</label>
+                                <textarea id="form17" name="mobileNumber" class="md-textarea form-control" rows="2"
+                                    cols="5"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="handler-container col-md-12">
+
+                        <div class="col-md-6 textarea-container-first pt-4">
+                            <div class="md-form mb-4  active-pink-textarea-2">
+                                <label for="form17" class="formlabel">Password</label>
+                                <textarea id="form17" name="password" class="md-textarea form-control" rows="2"
+                                    cols="5"></textarea>
+                            </div>
+                        </div>
+                        <div class="col-md-6 textarea-container-second pt-4">
+                            <div class="md-form mb-4  active-pink-textarea-2">
+                                <label for="form17" class="formlabel">Role</label>
+                                <select id="roleSelect" name="role" class="form-control">
+                                    <option>Select Role</option>
+                                    <option>super admin</option>
+                                    <option>admin</option>
+                                    <option>user</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="handler-container col-md-12">
+                        <div class="col-md-6 textarea-container-second pt-4">
+                            <div class="md-form mb-4  active-pink-textarea-2">
+                                <label for="form17" class="formlabel">Manager</label>
+                                <select id="managerSelect" name="id" class="form-control">
+                                     {{!-- {{#each user}}
+                                    <option>Select Manager</option>
+                                    <option value="id">{{ email }}</option>
+                                     {{/each}} --}}
+                                </select>
+                               
+                            </div>
+                        </div>
+                    </div>
+                    <div class="container" style="padding: 50px;">
+                        <div class="row">
+                            <div class="col-md-6" style="text-align: center;">
+                                <button class="button-34" role="button" type="submit"
+                                    style="margin:10px">Update</button>
+                            </div>
+                            <div class="col-md-6" style="text-align: center;">
+                                <button class="button-34" role="button" type="reset" style="margin:10px">Cancel</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </form>
+     <script>
+        const roleSelect = document.getElementById('roleSelect');
+        const managerSelect = document.getElementById('managerSelect');
+
+        roleSelect.addEventListener('change', () => {
+            const selectedRole = roleSelect.value;
+
+            if (selectedRole === 'user') {
+                // Populate manager options with admin emails
+                managerSelect.innerHTML = `
+                    <option value="">Select Manager</option>
+                    {{#each user}}
+                        {{#ifEquals role "admin"}}
+                            <option value="{{ id }}">{{ email }}</option>
+                        {{/ifEquals}}
+                    {{/each}}
+                `;
+            } else {
+                // Clear manager options
+                managerSelect.innerHTML = '<option value="">Select Manager</option>';
+            }
+        });
+    </script>
+</body>
+
+</html>

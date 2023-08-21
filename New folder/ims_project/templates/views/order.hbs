@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Order Billing</title>
+    <link rel="stylesheet" href="css/order.css">
+</head>
+
+<body id="body-pd">
+    {{>side}}
+  <div class="container" style="padding: 100px;">
+        {{#if message}}
+                <div class="alert alert-info">{{message}}</div>
+                {{/if}}
+        <form id="billing-form" action="/order" method="post">
+             <h1>Order Billing</h1>
+             <label for="customer-name">Customer Name:</label>
+    <input type="text" id="customer-name" name="customerName" required>
+
+    <label for="customer-mobile">Customer Mobile:</label>
+    <input type="tel" id="customer-mobile" name="customerMobile" required>
+
+    <label for="email">Email ID:</label>
+    <input type="email" id="email" name="customerEmail" required>
+
+    <label for="city">City:</label>
+    <input type="text" id="city" name="customerCity" required>
+
+    <label for="state">State:</label>
+    <input type="text" id="state" name="customerState" required>
+
+    <label for="pincode">Pincode:</label>
+    <input type="text" id="pincode" name="customerPinCode" required>
+
+         <label for="payment">Payment Method:</label>
+            <select id="payment" name="paymentMode" required>
+                <option>Select Payment Method</option>
+                <option value="online">Online</option>
+                <option value="offline">Offline</option>
+            </select>
+
+         
+
+           <!-- Your HTML form -->
+
+<table id="product-table">
+  <thead>
+    <tr>
+      <th>Store</th>
+      <th>Product</th>
+      <th>Quantity</th>
+      <th>Price</th>
+      <th>Discount %</th>
+      <th>Total</th>
+      <th>Action</th>
+        <td><button type="button" class="delete-row-btn" id="add-product-btn">AddProduct</button></td>
+      {{!-- <th>AddProduct</th> --}}
+   </tr>
+
+   
+  </thead>
+  <tbody id="product-list">
+
+  </tbody>
+    <tfoot>
+    <tr>
+      <td colspan="5" style="text-align: right;"><strong>Grand Total:</strong></td>
+      <td><input type="number" name="totalAmount" id="grand-total" readonly></td>
+      <td></td>
+    </tr>
+  </tfoot>
+</table>
+
+       <input type="submit" placeholder="Submit" id="type">
+
+        </form>
+
+
+
+    </div>
+    {{!-- <script src="/templates/views/script.js"></script> --}}
+
+
+
+</body>
+<script>
+  let tablebody = document.getElementById("product-list");
+
+  let addbtn = document.getElementById("add-product-btn");
+  addbtn.addEventListener("click", () => {
+    const newRow = document.createElement("tr");
+    newRow.innerHTML = `
+    <td>
+        <select name="outletId" id="store" class="store-select">
+          <option value="">Select Store</option>
+          {{#each store}}
+            <option value={{outletId}}>{{storeName}}</option>
+          {{/each}}
+        </select>
+      </td>
+      <td>
+        <select name="itemId" id="product" class="product-select">
+          <option value="">Select Product</option>
+          {{#each product}}
+            <option value={{itemId}}>{{itemName}}</option>
+          {{/each}}
+        </select>
+      </td>
+      <td><input type="number" name="quantity" class="quantity-input" value="1"></td>
+      <td><input type="number" name="price" class="price-input"></td>
+      <td><input type="number" name="discount" class="discount-input"></td>
+      <td><input type="number" name="total" class="total-cell"></td>
+      <td><i class="fa-solid fa-trash delete-row-btn"></i></td>
+    `;
+ //<td type="number" class="total-cell" name="total">0</td>
+    tablebody.appendChild(newRow);
+    setupRowListeners(newRow);
+    updateTotal();
+  });
+
+  function setupRowListeners(row) {
+    const storeSelect = row.querySelector(".store-select");
+    const productSelect = row.querySelector(".product-select");
+    const quantityInput = row.querySelector(".quantity-input");
+    const priceInput = row.querySelector(".price-input");
+    const discountInput = row.querySelector(".discount-input");
+    const totalInput = row.querySelector(".total-cell");
+    const deleteBtn = row.querySelector(".delete-row-btn");
+
+      storeSelect.addEventListener("change", updateTotal);
+    productSelect.addEventListener("change", updateTotal);
+    quantityInput.addEventListener("input", updateTotal);
+    priceInput.addEventListener("input", updateTotal);
+    discountInput.addEventListener("input", updateTotal);
+    // totalInput.addEventListener("input");
+    deleteBtn.addEventListener("click", function () {
+      row.remove();
+      updateTotal();
+    });
+  }
+
+  function updateTotal() {
+    const rows = tablebody.querySelectorAll("tr");
+    let grandTotal = 0;
+
+    rows.forEach(row => {
+      const quantity = parseFloat(row.querySelector(".quantity-input").value);
+      const price = parseFloat(row.querySelector(".price-input").value);
+      const discount = parseFloat(row.querySelector(".discount-input").value);
+
+      const total = (quantity * price) - (quantity * price) * discount/100;
+      row.querySelector(".total-cell").value = total.toFixed(2);
+
+      grandTotal += total;
+
+    });
+
+    // Update the grand total wherever you want to display it
+     document.getElementById("grand-total").value = grandTotal.toFixed(2);
+  }
+
+
+  document.getElementById("billing-form").addEventListener("submit", async (event) => {
+   alert("Product Added")
+  event.preventDefault();
+
+  // Collect customer details
+  const customerName = document.getElementById("customer-name").value;
+  const customerMobile = document.getElementById("customer-mobile").value;
+  const customerEmail = document.getElementById("email").value;
+  const customerCity=document.getElementById("city").value;
+  const customerState=document.getElementById("state").value;
+  const customerPinCode=document.getElementById("pincode").value;
+  const paymentMode=document.getElementById("payment").value;
+  const totalAmount=document.getElementById("grand-total").value;
+
+  //console.log(customerPincode,customerPayment)
+  // ... Collect other customer details
+
+  // Collect product details
+  const productRows = Array.from(document.querySelectorAll("#product-list tr"));
+  const products = productRows.map(row => {
+    const storeSelect = row.querySelector(".store-select");
+    const productSelect = row.querySelector(".product-select");
+    const quantityInput = row.querySelector(".quantity-input");
+    const priceInput = row.querySelector(".price-input");
+    const discountInput = row.querySelector(".discount-input");
+     const totalInput = row.querySelector(".total-cell");
+
+    return {
+      outletId:storeSelect.value,
+      storeName: storeSelect.options[storeSelect.selectedIndex].text,
+      itemId: productSelect.value,
+      itemName: productSelect.options[productSelect.selectedIndex].text,
+      quantity: quantityInput.value,
+      price: priceInput.value,
+      discount: discountInput.value,
+      itemAmount:totalInput.value,
+      // ... Collect other product details
+    };
+  });
+
+  // Prepare data to send
+  const dataToSend = {
+    customerName,
+    customerMobile,
+    customerEmail,
+    customerCity,
+    customerState,
+    customerPinCode,
+    paymentMode,
+    totalAmount,
+    // ... Other customer details
+    products // Send products as an array
+  };
+
+
+
+  // Send data to the server
+  const response = await fetch("/order", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(dataToSend)
+  });
+
+  // Handle response
+  const responseData = await response.json();
+  // ... Handle response as needed
+
+  // Reset the form fields and product list
+    resetFormAndProductList();
+});
+
+
+
+ function resetFormAndProductList() {
+    document.getElementById("customer-name").value = "";
+    document.getElementById("customer-mobile").value = "";
+    document.getElementById("email").value = "";
+    document.getElementById("city").value = "";
+    document.getElementById("state").value = "";
+    document.getElementById("pincode").value = "";
+    document.getElementById("grand-total").value = "";
+    document.getElementById("payment").selectedIndex = 0;
+
+    tablebody.innerHTML = "";
+  }
+
+</script>
+
+
+</html>

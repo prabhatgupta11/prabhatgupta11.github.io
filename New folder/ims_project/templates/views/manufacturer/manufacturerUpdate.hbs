@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body id="body-pd">
+    {{>side}}
+    <form action="/updateManufacturer/{{manufacturer.manufacturerId}}" method="post">
+        <section>
+            <div class="height-100 bg-light">
+                {{#if message}}
+                <div class="alert alert-info">{{message}}</div>
+                {{/if}}
+                <h3 class="pt-4">Add Manufacturer</h3>
+                <div class="col-md-12 main-table-data container mt-4 border">
+                      <h3 class="pt-4">Update Manufaturer</h3>
+                    <div class="handler-container col-md-12">
+                        <div class="col-md-6 textarea-container-first pt-4">
+                            <div class="md-form mb-4  active-pink-textarea-2">
+                                <label for="form17" class="formlabel">Short Description</label>
+                                <textarea id="form17" name="shortDescription" class="md-textarea form-control" rows="2"
+                                    cols="5">{{manufacturer.shortDescription}}</textarea>
+                            </div>
+                        </div>
+                        <div class="col-md-6 textarea-container-second pt-4">
+                            <div class="md-form mb-4  active-pink-textarea-2">
+                                <label for="form17" class="formlabel">Long Description</label>
+                                <textarea id="form17" name="longDescription" class="md-textarea form-control" rows="2"
+                                    cols="5">{{manufacturer.longDescription}}</textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="container" style="padding: 50px;">
+                        <div class="row">
+                            <div class="col-md-6" style="text-align: center;">
+                                <button class="button-34" role="button" type="submit"
+                                    style="margin:10px">Update</button>
+                            </div>
+                            <div class="col-md-6" style="text-align: center;">
+                                <button class="button-34" role="button" type="reset" style="margin:10px">Cancel</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </form>
+</body>
+
+</html>
