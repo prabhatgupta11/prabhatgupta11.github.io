@@ -144,7 +144,8 @@ body {
 }
 #nav-menu a:hover,
 #nav-menu a.active {
-  color:var(--bg-carolina-blue)
+  color:var(--bg-carolina-blue);
+  margin-bottom: 60px;
 }
 #menu-icon {
   font-size: 3.6rem;
@@ -158,6 +159,7 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: 60px;
 }
 .home-img img {
   width: 35vw;
@@ -654,6 +656,7 @@ span {
     }
   }
   @media (max-width: 991px) {
+
     .header {
       padding: 2rem 3%;
     }
