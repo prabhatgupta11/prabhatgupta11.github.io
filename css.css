@@ -379,6 +379,10 @@ span {
     align-items: center;
     gap: 2.5rem;
   }*/
+  .project-card{
+ 
+    margin-bottom: 40px;
+  }
   
   .project-container .project-card {
     
@@ -469,9 +473,6 @@ margin-top: 15px;
   font-size: 20px;
  }
 
- .bx {
-  font-size: 44px; /* You can adjust the size as needed */
-}
  .project-github-link{
   border: solid rgb(189, 242, 17);
   height: 50px;
