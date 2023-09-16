@@ -153,6 +153,10 @@ body {
   display: none;
 }
 
+.project-card > *{
+  width: 100% !important;
+}
+
 /*  */
 
 .home {
@@ -816,6 +820,21 @@ margin-top: 15px;
 .home-content h1 {
   font-size: 5rem;
 }
+.project-card{
+  flex-direction: column;
+  padding: 10px;
+}
+.product-info > *{
+  text-align: center;
+}
+.projectlink-sk{
+  width: 0%;
+  justify-content: center;
+ 
+}
+.description-sk{
+  margin: 0px 0px 0px 0px;
+}
 .home-img {
   width: 70vw;
   margin-top: 4rem;
@@ -839,6 +858,17 @@ margin-bottom: 3rem;
   }
 
   @media (max-width: 450px){
+    .project-container{
+    
+
+ 
+    }
+    .project-card div{
+    
+      grid-template-columns: 1fr;
+
+    }
+
     html {
       font-size: 50%;
     }
