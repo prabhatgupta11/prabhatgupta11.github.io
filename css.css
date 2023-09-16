@@ -104,6 +104,7 @@ body {
   }
 
   section {
+
     min-height: 100vh;
     padding: 10rem 9% 2rem;
   }
@@ -276,7 +277,6 @@ span {
   #about {
     text-align: center;
     justify-content: center;
-
     font-size: 30px;
     align-items: center;
     gap: 2rem;
@@ -750,10 +750,24 @@ margin-top: 15px;
   @media (max-width: 1200px) {
     html {
       font-size: 55%;
+      
 
+    }
+    .projectlink-sk button{
+      border: springgreen;
+     width: 120px;
+      height: 40px;
+     text-align: center;
+     border-radius: 1.5rem;
+     }
+    body{
+      border:  solid yellow;
     }
   }
   @media (max-width: 991px) {
+    body{
+      border:  solid rgb(240, 20, 24);
+    }
 
     .header {
       padding: 2rem 3%;
@@ -820,6 +834,7 @@ margin-top: 15px;
 .home-content h1 {
   font-size: 5rem;
 }
+/*/////////////////////////////////*/
 .project-card{
   flex-direction: column;
   padding: 10px;
