@@ -33,7 +33,7 @@ body {
      
     /** Background colors */
     --bg-wild-blue-yonder: rgb(96, 157, 248);
-    --bg-carolina-blue: rgb(249, 101, 3);
+    --bg-carolina-blue:#18FFFF;
     --bg-prussian-blue: rgb(44, 98, 172);
     --bg-oxford-blue: #041b24;
     --bg-oxford-blue-2:#041b24;
@@ -105,8 +105,15 @@ body {
 
   section {
 
-    min-height: 100vh;
+    min-height: 70vh;
     padding: 10rem 9% 2rem;
+  }
+  .tags h2{
+    margin-top: 50px;
+  }
+
+  .project h2{
+    margin-top: 50px;
   }
   
 .header {
@@ -280,8 +287,12 @@ span {
     font-size: 30px;
     align-items: center;
     gap: 2rem;
+    margin-bottom: 80px;
     background: var(--bg-oxford-blue);
   }
+  #about h1{
+   margin-top: 50px;
+   }
    
   #about h2{
    padding-top: 15px;
@@ -754,19 +765,19 @@ margin-top: 15px;
 
     }
     .projectlink-sk button{
-      border: springgreen;
+      
      width: 120px;
       height: 40px;
      text-align: center;
      border-radius: 1.5rem;
      }
     body{
-      border:  solid yellow;
+     
     }
   }
   @media (max-width: 991px) {
     body{
-      border:  solid rgb(240, 20, 24);
+    
     }
 
     .header {
