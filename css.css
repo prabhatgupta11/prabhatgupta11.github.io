@@ -17,11 +17,12 @@ html {
 body {
   background-color: #041b24;
   color: var(--text-color);
-  /* color: var(--text-shadow-blue); */ 
+  /* color: var(--text-shadow-blue); */
+}
 
-
-  
-
+.tech-sk img{
+ height: 10px;
+ width: 1px;
 }
 
 :root {
@@ -525,8 +526,41 @@ margin-top: 15px;
   .project-layer h4 {
     font-size: 3rem;
   }
-  .project-tech-stack {
+  .project-tech-stack  {
     font-size: 2rem;
+    
+    height:8.5vh;
+    display: flex;
+     margin: auto;
+     justify-content: center;
+     
+    
+  }
+  .project-tech-stack div{
+
+    justify-content: space-between;
+  }
+  .project-tech-stack h2{
+    font-size: 15px;
+  margin-top:15px;
+   
+  }
+  .project-tech-stack img{
+  
+   align-items: center;
+  }
+  .imgdiv{
+    width: 8%;
+  }
+  .imgdiv img{
+    height:35px;
+
+    padding-top:8px;
+  }
+  .img-fz div{
+    border: solid red;
+    width: 200px;
+    height: 50px;
   }
   .project-layer p {
     font-size: 1.5rem;
