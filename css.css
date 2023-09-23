@@ -302,7 +302,7 @@ span {
   }
   
   #about h4{
-    padding-top: 35px;
+    padding-top: 25px;
      font-size: 26px;
     
    }
@@ -583,6 +583,13 @@ margin-top: 15px;
     display: flex;
   }
    
+  #user-detail-name{
+    text-align: center;
+    padding-top: 30px;
+  }
+  #intro{
+    font-size: 20px;
+  }
   /*-----------------------------------*\
     #Contact
   \*-----------------------------------*/
@@ -810,6 +817,10 @@ margin-top: 15px;
     }
   }
   @media (max-width: 991px) {
+    #user-detail-name{
+      font-size: 25px;
+      
+    }
     body{
     
     }
@@ -846,6 +857,7 @@ margin-top: 15px;
 
   }
   @media (max-width: 768px) {
+
     #menu-icon {
       display: block;
     }
@@ -878,6 +890,12 @@ margin-top: 15px;
 }
 .home-content h1 {
   font-size: 5rem;
+}
+#user-detail-name{
+  font-size: 25px;
+  width: 80%;
+  margin: auto;
+
 }
 /*/////////////////////////////////*/
 .project-card{
@@ -918,6 +936,12 @@ margin-bottom: 3rem;
   }
 
   @media (max-width: 450px){
+    #user-detail-name{
+      font-size: 25px;
+      width: 80%;
+      margin: auto;
+    
+    }
     .project-container{
     
 
@@ -937,6 +961,21 @@ margin-bottom: 3rem;
 }
   }
   @media (max-width: 365px){
+    #intt{
+     
+     }
+    #fullstack{
+      width: 80%;
+      margin: auto;
+    }
+    #user-detail-name{
+      font-size: 20px;
+      padding-bottom: 25px;
+     
+      width: 100%;
+      margin: auto;
+      
+    }
     .home-img img {
       width: 90vw;
     }
@@ -953,6 +992,17 @@ margin: 20px;
   }
 
   @media (min-width: 575px) {
+  
+    #fullstack{
+      width: 80%;
+      margin: auto;
+    }
+    #user-detail-name{
+      font-size: 25px;
+      width: 80%;
+      margin: auto;
+      
+    }
     .home { position: relative; }
 
     .hero-bg {
