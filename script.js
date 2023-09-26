@@ -9,6 +9,8 @@ menuIcon.onclick = () => {
 };
 
 // *=============================== github calender ==================================
+token: "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",
+
     GitHubCalendar(".calendar", "prabhatgupta11");
 
     // or enable responsive functionality:
