@@ -9,9 +9,6 @@
   font-family: var(--fontFamily-noto_sans);
 
 }
-.calendar{
-  margin: 10px;
-}
 html {
   font-size: 62.5%;
   overflow-x: hidden;
@@ -22,13 +19,7 @@ body {
   color: var(--text-color);
   /* color: var(--text-shadow-blue); */
 }
-#mycalender{
 
-}
-#statsforsk{
-  background-color: #041b24;
- 
-}
 .tech-sk img{
  height: 10px;
  width: 1px;
@@ -52,7 +43,7 @@ body {
     --main-color: rgb(115, 255, 0);
   
     /** Text colors */
-    --text-color: #ffffff;
+    --text-color: #fff;
     --text-white: hsla(0, 0%, 100%, 1);
     --text-alice-blue: hsla(216, 100%, 95%, 1);
     --text-columbia-blue: hsla(199, 69%, 84%, 1);
@@ -502,7 +493,7 @@ margin-top: 15px;
  }
 
  .project-github-link{
-  
+  border: solid rgb(189, 242, 17);
   height: 50px;
   width: 100px;
  }
@@ -548,13 +539,6 @@ margin-top: 15px;
      
     
   }
-  .calendar{
-  
-  margin: 10px;
-  padding: 20px;
-  /* background-color: white; */
-
-}
   .project-tech-stack div{
 
     justify-content: space-between;
