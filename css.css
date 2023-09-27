@@ -922,11 +922,9 @@ margin-bottom: 3rem;
   }
 
   @media (max-width: 450px){
-    .project-container{
-    
-
- 
-    }
+    #user-detail-name {
+      font-size: 25px;
+  }
     .project-card div{
     
       grid-template-columns: 1fr;
@@ -941,6 +939,9 @@ margin-bottom: 3rem;
 }
   }
   @media (max-width: 365px){
+    #user-detail-name {
+      font-size: 25px;
+  }
     .home-img img {
       width: 90vw;
     }
